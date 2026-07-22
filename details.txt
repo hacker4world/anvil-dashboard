@@ -1,0 +1,42 @@
+details du voiture :
+- matricule
+- prix / jour
+- images
+- documents assurances, visite, carte gris, vignettes
+- model et marque
+- etat accidente, loue, disponible, maintenance
+- emplassement
+
+details client :
+- nom et prenom
+- date naissance
+- cin ou passport
+- permis
+- contact
+
+reservation :
+- client
+- voiture
+- date debut
+- date fin
+- nbr jour
+- avance
+- mode prix
+
+location :
+- client
+- voiture
+- date debut
+- date fin
+- nbr jour
+- mode prix
+- contrat
+- mode paiement (espece, virement, cheque)
+- type paiement (complet, par tranche)
+- mentant paye
+- reste
+- thmad
+
+location-paiement :
+- location
+- mentant

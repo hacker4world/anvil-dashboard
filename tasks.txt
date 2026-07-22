@@ -1,0 +1,7 @@
+- int stocks instead of decimal (products, imports, exports, requests, returns)
+- history pages (product, construction site)
+- clickable events in the calendar
+- permissions management page
+- notifications
+- activity history
+- security

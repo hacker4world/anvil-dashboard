@@ -14,6 +14,7 @@ import { ToolList } from "./pages/tools/tool-list";
 import { SkillList } from "./pages/skills/skill-list";
 import { McpServerList } from "./pages/mcp-servers/mcp-list";
 import { ErrorList } from "./errors/error-list";
+import { ProjectDetails } from "./pages/projects/project-details";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/projects" element={<ProjectList />} />
+            <Route path="/projects/details" element={<ProjectDetails />} />
             <Route path="/conversations" element={<ConversationList />} />
             <Route path="/agents" element={<AgentList />} />
             <Route path="/models" element={<ModelList />} />

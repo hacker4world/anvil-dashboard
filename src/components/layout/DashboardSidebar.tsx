@@ -25,8 +25,6 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.jfif";
 import { title } from "process";
-import { AuthState, useAuthStore } from "@/store/authStore";
-import { roleLabels } from "@/models/Account.model";
 
 const navigationItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
@@ -85,8 +83,6 @@ export function DashboardSidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const location = useLocation();
-
-  const { account } = useAuthStore((state: AuthState) => state);
 
   useEffect(() => {
     if (collapsed) {
@@ -257,28 +253,13 @@ export function DashboardSidebar() {
         <div className="flex-shrink-0 border-t border-sidebar-border p-4">
           <div className="flex items-center gap-3 rounded-lg bg-secondary/50 p-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
-              <span className="text-sm font-medium text-foreground">
-                {(() => {
-                  if (!account) return "??";
-                  return (
-                    account.firstname.charAt(0) + account.lastname.charAt(0)
-                  ).toUpperCase();
-                })()}
-              </span>
+              <span className="text-sm font-medium text-foreground">AA</span>
             </div>
             <div className="flex-1 truncate">
               <p className="text-sm font-medium text-foreground">
-                {(() => {
-                  if (!account) return "Non connecté";
-                  return `${account.firstname} ${account.lastname}`;
-                })()}
+                Abdelaziz Arfaoui
               </p>
-              <p className="text-xs text-muted-foreground">
-                {(() => {
-                  if (!account) return "";
-                  return roleLabels[account.role];
-                })()}
-              </p>
+              <p className="text-xs text-muted-foreground">Developer</p>
             </div>
           </div>
         </div>

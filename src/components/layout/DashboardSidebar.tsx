@@ -19,6 +19,9 @@ import {
   CrossIcon,
   CircleAlert,
   Server,
+  Cpu,
+  Workflow,
+  Plug,
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -69,8 +72,19 @@ const navigationItems = [
   },
   {
     title: "Skills and Workflows",
-    url: "/skills",
     icon: Sparkle,
+    children: [
+      {
+        title: "Manage Skills",
+        url: "/skills",
+        icon: Plug,
+      },
+      {
+        title: "Manage Workflows",
+        url: "/workflows",
+        icon: Workflow,
+      },
+    ],
   },
   {
     title: "Anvil Errors",

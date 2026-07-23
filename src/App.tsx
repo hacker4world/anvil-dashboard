@@ -17,6 +17,9 @@ import { ErrorList } from "./errors/error-list";
 import { ProjectDetails } from "./pages/projects/project-details";
 import { CreateAgent } from "./pages/agents/create-agent";
 import { AgentDetails } from "./pages/agents/agent-details";
+import { CreateModel } from "./pages/models/create-model";
+import { ModelDetails } from "./pages/models/model-details";
+import { WorkflowList } from "./pages/workflows/workflow-list";
 
 const queryClient = new QueryClient();
 
@@ -36,9 +39,12 @@ const App = () => (
             <Route path="/agents/create" element={<CreateAgent />} />
             <Route path="/agents/details" element={<AgentDetails />} />
             <Route path="/models" element={<ModelList />} />
+            <Route path="/models/create" element={<CreateModel />} />
+            <Route path="/models/details" element={<ModelDetails />} />
             <Route path="/providers" element={<ProviderList />} />
             <Route path="/tools" element={<ToolList />} />
             <Route path="/skills" element={<SkillList />} />
+            <Route path="/workflows" element={<WorkflowList />} />
             <Route path="/mcp" element={<McpServerList />} />
             <Route path="/errors" element={<ErrorList />} />
           </Routes>

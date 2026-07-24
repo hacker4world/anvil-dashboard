@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Cloud, Globe, KeyRound, LayoutGrid, List, Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // Dummy data for demonstration
 const providers = [
@@ -42,6 +43,8 @@ const providers = [
 
 export function ProviderList() {
   const [view, setView] = useState<"table" | "card">("table");
+
+  const navigate = useNavigate();
 
   return (
     <DashboardLayout>
@@ -79,7 +82,7 @@ export function ProviderList() {
           </div>
 
           {/* Add New Provider Button (Does nothing for now) */}
-          <Button>
+          <Button onClick={() => navigate("/providers/create")}>
             <Plus className="mr-2 h-4 w-4" />
             Add New Provider
           </Button>
@@ -99,7 +102,11 @@ export function ProviderList() {
             </TableHeader>
             <TableBody>
               {providers.map((provider) => (
-                <TableRow key={provider.id} className="cursor-pointer">
+                <TableRow
+                  key={provider.id}
+                  className="cursor-pointer"
+                  onClick={() => navigate("/providers/details")}
+                >
                   <TableCell className="font-medium">
                     <div className="flex items-center gap-2">
                       <Cloud className="h-4 w-4 text-orange-500" />
@@ -134,6 +141,7 @@ export function ProviderList() {
             <Card
               key={provider.id}
               className="flex flex-col cursor-pointer transition-shadow hover:shadow-md"
+              onClick={() => navigate("/providers/details")}
             >
               <CardHeader>
                 <div className="flex items-center gap-3">

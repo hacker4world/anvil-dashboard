@@ -20,6 +20,10 @@ import { AgentDetails } from "./pages/agents/agent-details";
 import { CreateModel } from "./pages/models/create-model";
 import { ModelDetails } from "./pages/models/model-details";
 import { WorkflowList } from "./pages/workflows/workflow-list";
+import { CreateProvider } from "./pages/providers/create-provider";
+import { ProviderDetails } from "./pages/providers/provider-details";
+import { CreateSkill } from "./pages/skills/create-skill";
+import { SkillDetails } from "./pages/skills/skill-details";
 
 const queryClient = new QueryClient();
 
@@ -42,8 +46,12 @@ const App = () => (
             <Route path="/models/create" element={<CreateModel />} />
             <Route path="/models/details" element={<ModelDetails />} />
             <Route path="/providers" element={<ProviderList />} />
+            <Route path="/providers/create" element={<CreateProvider />} />
+            <Route path="/providers/details" element={<ProviderDetails />} />
             <Route path="/tools" element={<ToolList />} />
             <Route path="/skills" element={<SkillList />} />
+            <Route path="/skills/create" element={<CreateSkill />} />
+            <Route path="/skills/details" element={<SkillDetails />} />
             <Route path="/workflows" element={<WorkflowList />} />
             <Route path="/mcp" element={<McpServerList />} />
             <Route path="/errors" element={<ErrorList />} />

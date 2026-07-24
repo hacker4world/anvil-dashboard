@@ -24,6 +24,7 @@ import { CreateProvider } from "./pages/providers/create-provider";
 import { ProviderDetails } from "./pages/providers/provider-details";
 import { CreateSkill } from "./pages/skills/create-skill";
 import { SkillDetails } from "./pages/skills/skill-details";
+import { ConversationDetails } from "./pages/conversations/conversation-details";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
             <Route path="/projects" element={<ProjectList />} />
             <Route path="/projects/details" element={<ProjectDetails />} />
             <Route path="/conversations" element={<ConversationList />} />
+            <Route path="/conversations/details" element={<ConversationDetails />} />
             <Route path="/agents" element={<AgentList />} />
             <Route path="/agents/create" element={<CreateAgent />} />
             <Route path="/agents/details" element={<AgentDetails />} />

@@ -18,8 +18,10 @@ import {
   Cloud,
   Cpu,
   DollarSign,
+  Plus,
   Save,
   Server,
+  Trash2,
   Zap,
 } from "lucide-react";
 
@@ -67,6 +69,7 @@ export function CreateModel() {
   const [modelName, setModelName] = useState("");
   const [pricing, setPricing] = useState("");
   const [contextWindow, setContextWindow] = useState("");
+  const [reasoningEfforts, setReasoningEfforts] = useState<string[]>([""]);
 
   const [providers, setProviders] = useState(initialProviders);
 
@@ -84,6 +87,27 @@ export function CreateModel() {
     );
   };
 
+  // Handlers for dynamic reasoning efforts
+  const handleAddEffort = () => {
+    setReasoningEfforts([...reasoningEfforts, ""]);
+  };
+
+  const handleRemoveEffort = (index: number) => {
+    const newEfforts = reasoningEfforts.filter((_, i) => i !== index);
+    // Ensure at least one input remains so the UI doesn't collapse
+    if (newEfforts.length === 0) {
+      setReasoningEfforts([""]);
+    } else {
+      setReasoningEfforts(newEfforts);
+    }
+  };
+
+  const handleEffortChange = (index: number, value: string) => {
+    const newEfforts = [...reasoningEfforts];
+    newEfforts[index] = value;
+    setReasoningEfforts(newEfforts);
+  };
+
   const handleCreateModel = () => {
     // Does nothing for now, just logging the state
     const selectedProviders = providers.filter((p) => p.isSelected);
@@ -91,6 +115,7 @@ export function CreateModel() {
       name: modelName,
       pricing,
       contextWindow,
+      reasoningEfforts: reasoningEfforts.filter((e) => e.trim() !== ""),
       providers: selectedProviders,
     });
   };
@@ -184,6 +209,50 @@ export function CreateModel() {
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* Reasoning Efforts Field */}
+              <div className="grid gap-2">
+                <div className="flex items-center justify-between">
+                  <Label>Reasoning Efforts</Label>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={handleAddEffort}
+                    className="h-7"
+                  >
+                    <Plus className="mr-2 h-4 w-4" />
+                    Add Effort
+                  </Button>
+                </div>
+                <div className="space-y-3">
+                  {reasoningEfforts.map((effort, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <Input
+                        value={effort}
+                        onChange={(e) =>
+                          handleEffortChange(index, e.target.value)
+                        }
+                        placeholder="e.g. low, medium, high, or custom strategy"
+                        className="flex-1"
+                      />
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="h-9 w-9 text-muted-foreground hover:text-red-600 hover:bg-red-500/10"
+                        onClick={() => handleRemoveEffort(index)}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  Define the reasoning levels or strategies the model can use.
+                  You can add multiple efforts.
+                </p>
               </div>
             </CardContent>
           </Card>
